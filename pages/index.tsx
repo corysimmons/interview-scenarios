@@ -1,15 +1,18 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import scenarios from '../scenarios'
+import returnOrdersOfScenariosWithMatchingFingerprints from '../utils/returnOrdersOfScenariosWithMatchingFingerprints'
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const fingerprint = {
+  reason: 'annual exam',
+  age: 36,
+  insurance: 'medicare'
+}
 
-export default IndexPage
+const Home = () => {
+  return (
+    <div>
+      <pre>{JSON.stringify(returnOrdersOfScenariosWithMatchingFingerprints(scenarios, fingerprint), null, 2)}</pre>
+    </div>
+  )
+}
+
+export default Home
